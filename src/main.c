@@ -11,7 +11,7 @@ int main() {
   float gamma = M_PI / 32;
   int fov = 10;
   int scale = 100;
-  Shape line = newLine();
+  Shape line = new_line();
 
   // Tell the window to use vsync and work on high DPI displays
   SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
@@ -33,9 +33,9 @@ int main() {
     // DrawLine(50, 50, 50, 0, WHITE);
     dt = 1.0f / GetFPS();
 
-    rotateShape(&line, alpha, beta, gamma, 1.0f / GetFPS());
-    drawShapePoints(&line, fov, scale);
-    drawShapeEdges(&line, fov, scale);
+    rotate_shape(&line, alpha, beta, gamma, GetFrameTime());
+    draw_shape_points(&line, fov, scale);
+    draw_shape_edges(&line, fov, scale);
 
     EndDrawing();
 

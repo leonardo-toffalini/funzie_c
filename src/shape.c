@@ -4,7 +4,7 @@
 #include "vector.h"
 #include <stdio.h>
 
-Shape newLine() {
+Shape new_line() {
   Point3D start = {1, 1, 1};
   Point3D finish = {1, 0, 1};
   Vector points = vector_init(sizeof(Point3D));
@@ -15,19 +15,19 @@ Shape newLine() {
   return (Shape){points, edges};
 }
 
-void rotateShape(Shape *s, float alpha, float beta, float gamma, float dt) {
+void rotate_shape(Shape *s, float alpha, float beta, float gamma, float dt) {
   int i = 0;
   Point3D *curr;
   Point3D projected;
   while (i < s->points.size) {
     curr = vector_get(&s->points, i);
-    projected = rotatePoint3D(*curr, alpha, beta, gamma, dt);
+    projected = rotate_point3D(*curr, alpha, beta, gamma, dt);
     vector_set(&s->points, i, &projected);
     i++;
   }
 }
 
-void drawShapePoints(Shape *s, int fov, int scale) {
+void draw_shape_points(Shape *s, int fov, int scale) {
   int i = 0;
   Point2D pp;
   while (i < s->points.size) {
@@ -37,7 +37,7 @@ void drawShapePoints(Shape *s, int fov, int scale) {
   }
 }
 
-void drawShapeEdges(Shape *s, int fov, int scale) {
+void draw_shape_edges(Shape *s, int fov, int scale) {
   int i = 0;
   Edge *e;
   Point3D *start, *finish;
@@ -53,6 +53,6 @@ void drawShapeEdges(Shape *s, int fov, int scale) {
   }
 }
 
-void drawShape(Shape *s, char mode, int fov, int scale);
+void draw_shape(Shape *s, char mode, int fov, int scale);
 
 void shape_free(Shape *s) { vector_free(&s->points); }
