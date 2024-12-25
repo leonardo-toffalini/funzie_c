@@ -35,6 +35,7 @@ int main() {
 
     rotateShape(&line, alpha, beta, gamma, 1.0f / GetFPS());
     drawShapePoints(&line, fov, scale);
+    drawShapeEdges(&line, fov, scale);
 
     EndDrawing();
 
@@ -42,6 +43,7 @@ int main() {
     // if (i > 5) break;
   }
 
+  shape_free(&line);
   CloseWindow();
   return 0;
 }

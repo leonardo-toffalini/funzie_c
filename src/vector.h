@@ -11,10 +11,11 @@ typedef struct {
 } Vector;
 
 // Function declarations
-void vector_init(Vector *vector, size_t element_size);
+Vector vector_init(size_t element_size);
 void vector_push_back(Vector *vector, void *element);
 void vector_pop_back(Vector *vector);
 void *vector_get(Vector *vector, size_t index);
+void vector_set(Vector *vector, size_t index, void *element);
 void vector_free(Vector *vector);
 
 #endif // !VECTOR_H

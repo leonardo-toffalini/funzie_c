@@ -3,11 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-void vector_init(Vector *vector, size_t element_size) {
-  vector->data = NULL;
-  vector->element_size = element_size;
-  vector->size = 0;
-  vector->capacity = 0;
+Vector vector_init(size_t element_size) {
+  Vector vector;
+  vector.data = NULL;
+  vector.element_size = element_size;
+  vector.size = 0;
+  vector.capacity = 0;
+  return vector;
 }
 
 void vector_push_back(Vector *vector, void *element) {
@@ -38,6 +40,16 @@ void *vector_get(Vector *vector, size_t index) {
   }
   return (char *)vector->data + (index * vector->element_size);
 }
+
+void vector_set(Vector *vector, size_t index, void *element) {
+    if (index >= vector->size) {
+        fprintf(stderr, "Index out of bounds\n");
+        exit(EXIT_FAILURE);
+    }
+    void *target = (char *)vector->data + (index * vector->element_size);
+    memcpy(target, element, vector->element_size);
+}
+
 
 void vector_free(Vector *vector) {
   free(vector->data);

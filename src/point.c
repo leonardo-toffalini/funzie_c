@@ -6,13 +6,9 @@
 const float windowWidth = 1280.0f;
 const float windowHeight = 800.0f;
 
-Point3D newPoint3D(float x, float y, float z) {
-  return (Point3D){x, y, z};
-}
+Point3D newPoint3D(float x, float y, float z) { return (Point3D){x, y, z}; }
 
-Point2D newPoint2D(float x, float y) {
-  return (Point2D){x, y};
-}
+Point2D newPoint2D(float x, float y) { return (Point2D){x, y}; }
 
 Point3D rotatePoint3D(Point3D p, float alpha, float beta, float gamma,
                       float dt) {
@@ -35,8 +31,8 @@ Point3D rotatePoint3D(Point3D p, float alpha, float beta, float gamma,
   return newPoint3D(newX, newY, newZ);
 }
 
-Point2D project(Point3D p, int fov, int scale) {
+Point2D project(Point3D *p, int fov, int scale) {
   // project, then translate coordinates to the center and magnify
-  return newPoint2D(windowWidth / 2 + scale * (p.x * fov) / (p.z + fov),
-                    windowHeight / 2 + scale * (p.y * fov) / (p.z + fov));
+  return newPoint2D(windowWidth / 2 + scale * (p->x * fov) / (p->z + fov),
+                    windowHeight / 2 + scale * (p->y * fov) / (p->z + fov));
 }
