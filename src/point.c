@@ -7,13 +7,11 @@ const float windowWidth = 1280.0f;
 const float windowHeight = 800.0f;
 
 Point3D newPoint3D(float x, float y, float z) {
-  Point3D p = {x, y, z};
-  return p;
+  return (Point3D){x, y, z};
 }
 
 Point2D newPoint2D(float x, float y) {
-  Point2D p = {x, y};
-  return p;
+  return (Point2D){x, y};
 }
 
 Point3D rotatePoint3D(Point3D p, float alpha, float beta, float gamma,
