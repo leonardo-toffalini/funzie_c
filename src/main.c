@@ -1,4 +1,3 @@
-#include "point.h"
 #include "raylib.h"
 #include "resource_dir.h" // utility header for SearchAndSetResourceDir
 #include "shape.h"
@@ -11,7 +10,7 @@ int main() {
   float gamma = M_PI / 32;
   int fov = 10;
   int scale = 100;
-  Shape line = new_line();
+  Shape shape = new_cube();
 
   // Tell the window to use vsync and work on high DPI displays
   SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
@@ -29,13 +28,11 @@ int main() {
     BeginDrawing();
     ClearBackground(BLACK);
 
-    // DrawLine(200, 200, 400, 400, WHITE);
-    // DrawLine(50, 50, 50, 0, WHITE);
-    dt = 1.0f / GetFPS();
+    DrawFPS(50, 50);
 
-    rotate_shape(&line, alpha, beta, gamma, GetFrameTime());
-    draw_shape_points(&line, fov, scale);
-    draw_shape_edges(&line, fov, scale);
+    rotate_shape(&shape, alpha, beta, gamma, GetFrameTime());
+    draw_shape_points(&shape, fov, scale);
+    draw_shape_edges(&shape, fov, scale);
 
     EndDrawing();
 
@@ -43,7 +40,7 @@ int main() {
     // if (i > 5) break;
   }
 
-  shape_free(&line);
+  shape_free(&shape);
   CloseWindow();
   return 0;
 }

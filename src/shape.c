@@ -15,6 +15,34 @@ Shape new_line() {
   return (Shape){points, edges};
 }
 
+Shape new_cube() {
+  Vector points = vector_init(sizeof(Point3D));
+  vector_push_back(&points, &(Point3D){1, 1, 1});
+  vector_push_back(&points, &(Point3D){1, 1, -1});
+  vector_push_back(&points, &(Point3D){1, -1, 1});
+  vector_push_back(&points, &(Point3D){1, -1, -1});
+  vector_push_back(&points, &(Point3D){-1, 1, 1});
+  vector_push_back(&points, &(Point3D){-1, 1, -1});
+  vector_push_back(&points, &(Point3D){-1, -1, 1});
+  vector_push_back(&points, &(Point3D){-1, -1, -1});
+
+  Vector edges = vector_init(sizeof(Edge));
+  vector_push_back(&edges, &(Edge){0, 1});
+  vector_push_back(&edges, &(Edge){2, 3});
+  vector_push_back(&edges, &(Edge){4, 5});
+  vector_push_back(&edges, &(Edge){6, 7});
+  vector_push_back(&edges, &(Edge){0, 2});
+  vector_push_back(&edges, &(Edge){1, 3});
+  vector_push_back(&edges, &(Edge){2, 6});
+  vector_push_back(&edges, &(Edge){3, 7});
+  vector_push_back(&edges, &(Edge){4, 6});
+  vector_push_back(&edges, &(Edge){5, 7});
+  vector_push_back(&edges, &(Edge){0, 4});
+  vector_push_back(&edges, &(Edge){1, 5});
+
+  return (Shape){points, edges};
+}
+
 void rotate_shape(Shape *s, float alpha, float beta, float gamma, float dt) {
   int i = 0;
   Point3D *curr;

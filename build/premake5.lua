@@ -193,6 +193,8 @@ if (downloadRaylib) then
 
         filter "system:macosx"
             links {"OpenGL.framework", "Cocoa.framework", "IOKit.framework", "CoreFoundation.framework", "CoreAudio.framework", "CoreVideo.framework", "AudioToolbox.framework"}
+            buildoptions { "-fsanitize=address", "-g" }
+            linkoptions { "-fsanitize=address" }
 
         filter{}
 		
